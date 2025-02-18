@@ -1,0 +1,1 @@
+# react-tauri-store
