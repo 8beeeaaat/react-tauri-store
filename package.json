@@ -1,0 +1,63 @@
+{
+  "name": "react-tauri-store",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.cjs",
+    "node": "./dist/index.mjs",
+    "default": "./dist/index.cjs"
+  },
+  "directories": {
+    "lib": "src"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "dev": "ts-node src/index",
+    "format": "biome check --fix",
+    "lint": "run-p lint:*",
+    "lint:biome": "biome check",
+    "lint:ts": "tsc",
+    "build": "rimraf ./dist && run-p build:*",
+    "build:esbuild": "ts-node build.ts",
+    "build:types": "tsc",
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/8beeeaaat/react-tauri-store.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": ["tauri", "store", "react", "hooks"],
+  "author": "8beeeaaat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/8beeeaaat/react-tauri-store/issues"
+  },
+  "homepage": "https://github.com/8beeeaaat/react-tauri-store#readme",
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@testing-library/react": "^16.2.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "esbuild": "^0.25.0",
+    "globals": "^15.15.0",
+    "jsdom": "^26.0.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.1",
+    "vitest": "^3.0.6"
+  },
+  "dependencies": {
+    "@tauri-apps/plugin-store": "^2.2.0",
+    "react": "^19.0.0"
+  }
+}
