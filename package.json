@@ -15,7 +15,9 @@
   "directories": {
     "lib": "src"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "ts-node src/index",
     "format": "biome check --fix",
@@ -23,7 +25,7 @@
     "lint:biome": "biome check",
     "lint:ts": "tsc",
     "build": "rimraf ./dist && run-p build:*",
-    "build:esbuild": "ts-node build.ts",
+    "build:esbuild": "node --loader ts-node/esm build.ts",
     "build:types": "tsc",
     "test": "vitest"
   },
@@ -34,7 +36,12 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": ["tauri", "store", "react", "hooks"],
+  "keywords": [
+    "tauri",
+    "store",
+    "react",
+    "hooks"
+  ],
   "author": "8beeeaaat",
   "license": "MIT",
   "bugs": {

@@ -1,6 +1,6 @@
 # react-tauri-store
 
-## Tauri Store for React
+## Tauri Store for React apps
 
 This repository provides a simple way to integrate Tauri's local storage (via the [Tauri Store plugin](https://v2.tauri.app/plugin/store/) ) into your React application. It exposes a [React context provider](https://react.dev/reference/react/createContext#provider) and a custom hook so you can easily manage application state that persists on disk.
 
@@ -24,7 +24,7 @@ This setup is designed to make it straightforward for developers using React and
 
 #### Demo: Auto updating the store file
 
-<video src="./assets/demo.webm" autoplay loop muted style="max-width: 800px;"></video>
+[demo.webm](https://github.com/user-attachments/assets/39318071-d6e6-45ae-97ac-c0eb5d010801)
 
 ### Usage
 
