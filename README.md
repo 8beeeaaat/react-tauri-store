@@ -37,7 +37,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <TauriStoreProvider
       filePath="settings.json"
-      defaultValues={defaultSetting}
+      defaultValues={{ count: 0 }}
     >
       <App />
     </TauriStoreProvider>
