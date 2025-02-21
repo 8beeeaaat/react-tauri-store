@@ -1,7 +1,7 @@
 {
   "name": "react-tauri-store",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,9 +15,7 @@
   "directories": {
     "lib": "src"
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "dev": "ts-node src/index",
     "format": "biome check --fix",
@@ -36,12 +34,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "tauri",
-    "store",
-    "react",
-    "hooks"
-  ],
+  "keywords": ["tauri", "store", "react", "hooks"],
   "author": "8beeeaaat",
   "license": "MIT",
   "bugs": {
