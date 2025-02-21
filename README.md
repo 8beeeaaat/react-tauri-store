@@ -61,18 +61,27 @@ function App() {
 
   // Update the existing "key" and add/update the "object" key
   const updateKeys = () => {
+    set({ count: state.count + 1 });
     set({ key: "updated_value", object: { k: "v" } });
   };
 
   return (
     <div>
-      <p>Count: {state.count}</p>
-      <p>Key: {state.key || "not set"}</p>
-      <p>Object: {state.object ? JSON.stringify(state.object) : "not set"}</p>
-      <button onClick={addKey}>Add Key</button>
-      <button onClick={updateKeys}>Update Key</button>
-      <button onClick={reset}>Reset to Default Values</button>
-      <button onClick={clear}>Clear All Keys</button>
+      {state.count !== undefined ? <p>Count: {state.count}</p> : null}
+      {state.key !== undefined ? <p>Key: {state.key || "not set"}</p> : null}
+      {state.object !== undefined ? <p>Object: {state.object ? JSON.stringify(state.object) : "not set"}</p> : null}
+      <button type="button" onClick={addKey}>
+        Add Key
+      </button>
+      <button type="button" onClick={updateKeys}>
+        Update Key
+      </button>
+      <button type="button" onClick={reset}>
+        Reset to Default Values
+      </button>
+      <button type="button" onClick={clear}>
+        Clear All Keys
+      </button>
     </div>
   );
 }
