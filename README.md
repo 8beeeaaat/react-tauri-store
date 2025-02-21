@@ -33,13 +33,16 @@ After installation, wrap your application's root component with the `TauriStoreP
 ```tsx
 import { TauriStoreProvider } from "react-tauri-store";
 
-function App() {
-  return (
-    <TauriStoreProvider filePath="data.json" defaultValues={{ count: 0 }}>
-      <YourAppComponents />
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <React.StrictMode>
+    <TauriStoreProvider
+      filePath="settings.json"
+      defaultValues={defaultSetting}
+    >
+      <App />
     </TauriStoreProvider>
-  );
-}
+  </React.StrictMode>,
+);
 ```
 
 Within any descendant component, use the `useTauriStore` hook to access and modify the persistent state. For example:
