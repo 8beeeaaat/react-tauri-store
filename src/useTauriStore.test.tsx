@@ -6,17 +6,17 @@ import { TauriStoreProvider, useTauriStore } from "./useTauriStore.js";
 
 // Mock Store.load to return a dummy store object
 beforeAll(() => {
-  Store.load = async (filePath: string) => {
+  Store.load = async (_filePath: string) => {
     return {
-      async get(key: string) {
+      async get(_key: string) {
         return null;
       },
-      async set(key: string, value: unknown) {},
+      async set(_key: string, _value: unknown) {},
       async save() {},
-      async has(key: string) {
+      async has(_key: string) {
         return false;
       },
-      async delete(key: string) {},
+      async delete(_key: string) {},
       async clear() {},
       async reset() {},
     } as unknown as Store;
