@@ -36,6 +36,7 @@ const StoreContext = createContext<{
   defaultValues: unknown;
   state: unknown;
   dispatch: React.Dispatch<StoreAction<unknown>>;
+  store: Store | null;
 } | null>(null);
 
 export function TauriStoreProvider<T extends Record<string, unknown>>({
@@ -81,7 +82,7 @@ export function TauriStoreProvider<T extends Record<string, unknown>>({
 
   return (
     <StoreContext.Provider
-      value={{ defaultValues: defaultValues, state, dispatch }}
+      value={{ defaultValues: defaultValues, state, dispatch, store }}
     >
       {children}
     </StoreContext.Provider>
@@ -89,38 +90,40 @@ export function TauriStoreProvider<T extends Record<string, unknown>>({
 }
 
 export function useTauriStore<T extends Record<string, unknown>>() {
-  const context = useContext(StoreContext);
-  if (!context) {
+  const _context = useContext(StoreContext);
+  if (!_context) {
     throw new Error("useTauriStore must be used within a TauriStoreProvider");
   }
-  const { defaultValues, state, dispatch } = context as {
+  const context = _context as {
     defaultValues: T;
     state: T;
     dispatch: React.Dispatch<StoreAction<T>>;
+    store: Store | null;
   };
 
   // The setter shorthand function that accepts an object to update state.
   const set = (updates: Partial<T>) => {
     for (const key in updates) {
-      dispatch({ type: "SET", key, value: updates[key] });
+      context.dispatch({ type: "SET", key, value: updates[key] });
     }
   };
 
   // delete all keys from state
   const clear = () => {
-    dispatch({ type: "CLEAR" });
+    context.dispatch({ type: "CLEAR" });
   };
 
   // reset to defaultValues
   const reset = () => {
-    dispatch({ type: "CLEAR" });
-    set(defaultValues);
+    context.dispatch({ type: "CLEAR" });
+    for (const key in context.defaultValues) {
+      context.dispatch({ type: "SET", key, value: context.defaultValues[key] });
+    }
   };
 
   return {
-    state,
+    ...context,
     clear,
-    dispatch,
     set,
     reset,
   };
