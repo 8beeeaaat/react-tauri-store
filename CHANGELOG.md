@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.4] - 2025-08-31
+
+### Fixed
+
+- Fixed reset function to properly restore default values instead of only clearing state
+- Improved reset function implementation to iterate through default values explicitly
+
+### Changed
+
+- Refactored context usage in useTauriStore hook for better clarity and consistency
+- Enhanced type safety by exposing store instance through context
+- Improved hook API by spreading context values for cleaner access to state, dispatch, and store
+
+### Technical
+
+- Renamed internal context variable for better code readability
+- Added store instance to context provider value for advanced use cases
+
 ## [0.1.3] - 2025-07-21
 
 ### Changed
