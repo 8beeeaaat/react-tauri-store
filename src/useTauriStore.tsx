@@ -36,6 +36,7 @@ const StoreContext = createContext<{
   defaultValues: unknown;
   state: unknown;
   dispatch: React.Dispatch<StoreAction<unknown>>;
+  store: Store | null;
 } | null>(null);
 
 export function TauriStoreProvider<T extends Record<string, unknown>>({
@@ -81,7 +82,7 @@ export function TauriStoreProvider<T extends Record<string, unknown>>({
 
   return (
     <StoreContext.Provider
-      value={{ defaultValues: defaultValues, state, dispatch }}
+      value={{ defaultValues: defaultValues, state, dispatch, store }}
     >
       {children}
     </StoreContext.Provider>
@@ -97,6 +98,7 @@ export function useTauriStore<T extends Record<string, unknown>>() {
     defaultValues: T;
     state: T;
     dispatch: React.Dispatch<StoreAction<T>>;
+    store: Store | null;
   };
 
   // The setter shorthand function that accepts an object to update state.
@@ -114,7 +116,9 @@ export function useTauriStore<T extends Record<string, unknown>>() {
   // reset to defaultValues
   const reset = () => {
     dispatch({ type: "CLEAR" });
-    set(defaultValues);
+    for (const key in defaultValues) {
+      dispatch({ type: "SET", key, value: defaultValues[key] });
+    }
   };
 
   return {
